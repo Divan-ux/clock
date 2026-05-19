@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>NEXON Chrono – Luxury Analog Clock 🌌</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-dark: #000;
+  --bg-mid: #1a1a1a;
+  --text-light: #f9f9f9;
+  --accent: #00ffd5;
+  --accent2: #00ffa5;
+  --glow: rgba(0, 255, 213, 0.4);
+}
+
+/* 🌈 Moving gradient background */
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  color: var(--text-light);
+  background: linear-gradient(120deg, var(--bg-dark), var(--bg-mid), var(--bg-dark));
+  background-size: 300% 300%;
+  animation: gradientMove 14s ease infinite;
+  overflow: hidden;
+}
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* 🏢 Center Wrapper to align Clock and Digital Readout vertically */
+.clock-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* 🕒 Huge Glassmorphic Clock Face */
+.clock-container {
+  position: relative;
+  width: min(75vw, 520px);
+  height: min(75vw, 520px);
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(32px) saturate(200%);
+  -webkit-backdrop-filter: blur(32px) saturate(200%);
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), 
+              inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.clock-face {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* Subtle hour markers */
+.marker {
+  position: absolute;
+  width: 2px;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.2);
+  left: 50%;
+  transform-origin: 50% calc(min(75vw, 520px) / 2);
+}
+.marker.primary {
+  width: 4px;
+  height: 16px;
+  background: var(--accent);
+  box-shadow: 0 0 10px var(--glow);
+}
+
+/* 🔢 Hour Numbers for Kids */
+.hour-number {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  left: 50%;
+  top: 50%;
+  margin-left: -20px;
+  margin-top: -20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: clamp(1.2rem, 4vw, 1.8rem);
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.85);
+  text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+/* Highlight core quarters */
+.hour-number.quarter {
+  color: var(--text-light);
+  font-weight: 800;
+}
+
+/* 🕰️ Clock Hands Container */
+.hand {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  transform-origin: bottom center;
+  border-radius: 10px;
+}
+
+/* Luxury styled hands */
+.hour-hand {
+  width: 10px;
+  height: 25%;
+  background: var(--text-light);
+  margin-left: -5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.6);
+  z-index: 5;
+}
+
+.minute-hand {
+  width: 5px;
+  height: 38%;
+  background: rgba(255, 255, 255, 0.8);
+  margin-left: -2.5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.6);
+  z-index: 6;
+}
+
+/* Futuristic smooth sweeping neon second hand */
+.second-hand {
+  width: 2px;
+  height: 44%;
+  background: var(--accent);
+  margin-left: -1px;
+  box-shadow: 0 0 15px var(--glow), 0 0 30px var(--accent);
+  z-index: 10;
+}
+
+/* Center Cap */
+.center-cap {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: var(--bg-dark);
+  border: 2px solid var(--accent);
+  border-radius: 50%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 11;
+  box-shadow: 0 0 10px var(--glow);
+}
+
+/* 📱 Fancy Digital Display underneath the clock */
+.digital-display {
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  font-weight: 300;
+  letter-spacing: 6px;
+  color: var(--text-light);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: 0.8rem 2.5rem;
+  border-radius: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.2);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Footer */
+footer {
+  position: fixed;
+  bottom: 15px;
+  text-align: center;
+  width: 100%;
+  font-size: 0.9rem;
+  opacity: 0.5;
+  letter-spacing: 1px;
+}
+</style>
+</head>
+<body>
+
+<div class="clock-wrapper">
+  <div class="clock-container" id="clockBlock">
+    <div class="clock-face" id="clockFace">
+      <div class="hand hour-hand" id="hourHand"></div>
+      <div class="hand minute-hand" id="minHand"></div>
+      <div class="hand second-hand" id="secHand"></div>
+      <div class="center-cap"></div>
+    </div>
+  </div>
+
+  <div class="digital-display" id="digitalTime">00:00</div>
+</div>
+
+<footer>
+  NEXON Chrono Analog – by Divan Barnard
+</footer>
+
+<script>
+const hourHand = document.getElementById('hourHand');
+const minHand = document.getElementById('minHand');
+const secHand = document.getElementById('secHand');
+const digitalTime = document.getElementById('digitalTime');
+const clockFace = document.getElementById('clockFace');
+
+// Layout metrics
+const clockSize = 520; 
+const radius = clockSize / 2;
+const numberOffset = 45; 
+
+// Generate Hour Markers & Numbers Dynamically
+for (let i = 0; i < 12; i++) {
+  const angleDeg = i * 30;
+  const angleRad = (angleDeg - 90) * (Math.PI / 180);
+
+  // 1. Add Edge Ticks
+  const marker = document.createElement('div');
+  marker.className = 'marker';
+  if (i % 3 === 0) marker.classList.add('primary');
+  marker.style.transform = `translateX(-50%) rotate(${angleDeg}deg)`;
+  clockFace.appendChild(marker);
+
+  // 2. Add Numbers (1-12)
+  const hourNum = document.createElement('div');
+  hourNum.className = 'hour-number';
+  if (i % 3 === 0) hourNum.classList.add('quarter');
+  hourNum.textContent = i === 0 ? 12 : i;
+
+  const x = radius + (radius - numberOffset) * Math.cos(angleRad);
+  const y = radius + (radius - numberOffset) * Math.sin(angleRad);
+
+  hourNum.style.left = `${(x / clockSize) * 100}%`;
+  hourNum.style.top = `${(y / clockSize) * 100}%`;
+  
+  clockFace.appendChild(hourNum);
+}
+
+function updateClock() {
+  const now = new Date();
+  
+  const hours = now.getHours();
+  const minutes = now.getMinutes();
+  const seconds = now.getSeconds();
+  const milliseconds = now.getMilliseconds();
+
+  // Smooth movement styling calculations
+  const secDeg = (seconds * 6) + (milliseconds * 0.006);
+  const minDeg = (minutes * 6) + (seconds * 0.1);
+  const hourDeg = ((hours % 12) * 30) + (minutes * 0.5);
+
+  // Rotate hands
+  secHand.style.transform = `rotate(${secDeg}deg)`;
+  minHand.style.transform = `rotate(${minDeg}deg)`;
+  hourHand.style.transform = `rotate(${hourDeg}deg)`;
+
+  // Update digital text box - strictly HH:MM
+  const displayHours = String(hours).padStart(2, '0');
+  const displayMinutes = String(minutes).padStart(2, '0');
+  digitalTime.textContent = `${displayHours}:${displayMinutes}`;
+
+  requestAnimationFrame(updateClock);
+}
+
+requestAnimationFrame(updateClock);
+
+// Fullscreen toggle setup
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'F11' || e.key.toLowerCase() === 'f') {
+    e.preventDefault();
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().catch(()=>{});
+    } else {
+      document.exitFullscreen();
+    }
+  }
+});
+</script>
+</body>
+</html>
