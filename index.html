@@ -15,7 +15,7 @@
   --glow: rgba(0, 255, 213, 0.4);
 }
 
-/* 🌈 Moving gradient background */
+/* 🌌 Clean, Static Premium Gradient Background */
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
@@ -25,15 +25,8 @@ body {
   align-items: center;
   min-height: 100vh;
   color: var(--text-light);
-  background: linear-gradient(120deg, var(--bg-dark), var(--bg-mid), var(--bg-dark));
-  background-size: 300% 300%;
-  animation: gradientMove 14s ease infinite;
+  background: radial-gradient(circle at center, var(--bg-mid) 0%, var(--bg-dark) 100%);
   overflow: hidden;
-}
-@keyframes gradientMove {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
 }
 
 /* 🏢 Center Wrapper to align Clock and Digital Readout vertically */
